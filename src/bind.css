@@ -1,0 +1,13 @@
+#bind-panel {
+
+}
+
+#bind-panel h1 {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#bind-panel .option-buttons {
+  margin: 0;
+  width: auto;
+}

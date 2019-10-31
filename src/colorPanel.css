@@ -1,0 +1,27 @@
+#color-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  place-self: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.top {
+  width: 100%;
+  float: left;
+  display: block
+}
+
+.bottom2 {
+  width: 49%;
+  display: block;
+}
+
+.bottom3 {
+  width: 32%;
+  display: block
+}

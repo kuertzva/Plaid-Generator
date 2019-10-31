@@ -1,0 +1,57 @@
+#topBar {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+#github-link {
+  float: right;
+  padding: .25rem;
+  text-decoration: none;
+}
+
+#nav-bar-open {
+  padding: .25rem;
+}
+
+#nav-bar {
+  grid-column: 1 / 13;
+  height: 20vh;
+  z-index: 2;
+  background-color: rgb(50,50,50);
+  align-content: stretch;
+  justify-content: stretch;
+}
+
+#inner-nav {
+  place-self: start;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 19vh;
+  max-width: 85vw;
+  padding-left: 1rem;
+}
+
+#inner-nav a {
+  text-decoration: none;
+  flex: 1 1 0;
+  padding: .7rem;
+  background-color: rgba(0,0,0,.2);
+  border: .05rem solid black;
+  font-size: 1.5rem;
+  margin-top: .25rem;
+  margin-right: .25rem;
+  text-align: center;
+  text-justify: center;
+  text-shadow: 0rem 0rem black,
+      0rem 0rem black,
+      0rem 0rem black,
+      0rem 0rem black;
+  color: white;
+
+}
+
+#inner-nav a.hidden {
+  border-color: rgba(0,0,0, 0);
+  background-color: rgba(0,0,0, 0);
+  color: red;
+}

@@ -1,0 +1,27 @@
+
+.pm-container {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  place-self: stretch;
+}
+
+.pm-bundle {
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+.pm-bundle button {
+  margin: 0px;
+  width:25%;
+}
+
+.pm-bundle input {
+  margin: 0px;
+  width: 50%;
+  background: transparent;
+  border-color: transparent;
+  text-align: center;
+}
