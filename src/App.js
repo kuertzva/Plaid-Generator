@@ -28,6 +28,7 @@ class App extends React.Component {
     this.downloadToggle = this.downloadToggle.bind(this);
     this.navToggle = this.navToggle.bind(this);
     this.bindToggle = this.bindToggle.bind(this);
+    this.unbind = this.unbind.bind(this);
     const rootStyle = getComputedStyle(root);
     this.state = {
       intro: true,
@@ -121,18 +122,32 @@ class App extends React.Component {
     if(this.state.currentPanel > 0) {
       const current = this.state.panels[this.state.currentPanel];
       const newPanels = this.state.panels;
-      newPanels.splice(this.state.currentPanel, 1);
-      var newCurrent = this.state.currentPanel - 1;
-
       // check for binding
       if(current.bindees.length > 0 || current.boundTo) {
-        alert('Please unbind before removing')
-      } else {
+        //alert('Please unbind before removing')
+
+        // unbind all bound lineStart
+        if(current.bindees.length > 0) {
+          var bindee;
+          for(bindee of current.bindees) {
+            this.unbind(bindee);
+          }
+        }
+
+        if(current.boundTo) {
+          this.unbind(current);
+        }
+      }
+      newPanels.splice(this.state.currentPanel, 1);
+      var i;
+      for (i = 1; i < newPanels.length; i++) {
+        newPanels[i].index = i;
+      }
+      var newCurrent = this.state.currentPanel - 1;
         this.setState({
           panels: newPanels,
           currentPanel: newCurrent
         });
-      }
     } else {
       alert('Cannot delete the background');
     }
@@ -247,8 +262,7 @@ class App extends React.Component {
 
   }
 
-  handleUnbind() {
-    const bindee = this.state.panels[this.state.currentPanel];
+  unbind(bindee) {
     const bindor = bindee.boundTo;
 
     bindee.boundTo = null;
@@ -258,7 +272,7 @@ class App extends React.Component {
       bindor.bindees.splice(bindeeIndex, 1);
     }
 
-    this.bindToggle();
+
 
     bindee.offset.x += bindor.offset.x;
     bindee.offset.y += bindor.offset.y;
@@ -266,6 +280,14 @@ class App extends React.Component {
     bindee.boundary.d += bindor.boundary.d;
     bindee.boundary.l += bindor.boundary.l;
     bindee.boundary.r += bindor.boundary.r;
+  }
+
+  handleUnbind() {
+    const bindee = this.state.panels[this.state.currentPanel];
+
+    this.unbind(bindee);
+
+    this.bindToggle();
 
   }
 
