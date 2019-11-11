@@ -236,6 +236,15 @@ class App extends React.Component {
     bindee.boundTo = bindor;
     bindor.bindees.push(bindee);
 
+    // This is the make the line not move once bound
+    bindee.offset.x -= bindor.offset.x;
+    bindee.offset.y -= bindor.offset.y;
+    bindee.boundary.u -= bindor.boundary.u;
+    bindee.boundary.d -= bindor.boundary.d;
+    bindee.boundary.l -= bindor.boundary.l;
+    bindee.boundary.r -= bindor.boundary.r;
+
+
   }
 
   handleUnbind() {
@@ -250,6 +259,13 @@ class App extends React.Component {
     }
 
     this.bindToggle();
+
+    bindee.offset.x += bindor.offset.x;
+    bindee.offset.y += bindor.offset.y;
+    bindee.boundary.u += bindor.boundary.u;
+    bindee.boundary.d += bindor.boundary.d;
+    bindee.boundary.l += bindor.boundary.l;
+    bindee.boundary.r += bindor.boundary.r;
 
   }
 
