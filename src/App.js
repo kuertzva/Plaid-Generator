@@ -247,9 +247,9 @@ class App extends React.Component {
       newPanels.splice(this.state.currentPanel, 1);
 
       // fix the indexes
-      var i;
-      for (i = 1; i < newPanels.length; i++) {
-        newPanels[i].index = i;
+      var j;
+      for (j = 1; j < newPanels.length; j++) {
+        newPanels[j].index = j;
       }
 
       var newCurrent = this.state.currentPanel - 1;
@@ -323,11 +323,7 @@ class App extends React.Component {
     }));
   }
 
-  downloadToggle() {
-    this.setState((state) => ({
-      download: !(state.download)
-    }));
-  }
+
 
   // UNPASSED/ CALLED WITHIN THIS COMPONENT
   bind(bindee, bindor) {

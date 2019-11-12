@@ -20,12 +20,19 @@ export class Canvas extends React.Component {
       document.getElementById('canvas-container'));
     const ccWidth = parseInt(ccStyle.width.slice(0, -2));
     const ccHeight = parseInt(ccStyle.height.slice(0, -2));
+    const borderWidth = parseInt(
+      (getComputedStyle(
+        document.getElementById('canvas'), null).getPropertyValue(
+          'border-left-width')).slice(0, -2)
+    );
 
     if(ccWidth > ccHeight) {
       this.side = ccHeight;
     } else {
       this.side = ccWidth;
     }
+
+    this.side -= borderWidth * 2;
 
     this.props.setSide(this.side);
 
@@ -117,10 +124,12 @@ export class Canvas extends React.Component {
     e.preventDefault();
     console.log('move')
 
+    // make sure there was a prior click
     if(this.priorClick.idx === null) {
       return;
     }
 
+    // check for touch and get coords
     var coords;
     if(e.type === 'touchmove'){
       coords= this.canvasCoords(e.changedTouches[0]);
@@ -130,6 +139,7 @@ export class Canvas extends React.Component {
     const lines = this.props.panels;
     const line = lines[this.priorClick.idx];
 
+    //adjust offset
     if(this.priorClick.dir === 'h') {
       let offset = coords.h - this.priorClick.coords.h;
       line.offset.y += offset;
@@ -138,6 +148,7 @@ export class Canvas extends React.Component {
       line.offset.x += offset;
     }
 
+    //record coords
     this.priorClick.coords.v = coords.v;
     this.priorClick.coords.h = coords.h;
 

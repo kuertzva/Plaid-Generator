@@ -9,13 +9,8 @@ export function ButtonPanel(props) {
     props.handlers['switchLine'](diff);
   }
 
-
-  function underConstruction() {
-    alert('this feature is under production');
-  }
-
+  // determine what to put in advanced toggle button
   var toggleText;
-
   if(props.displayAdvance) {
     toggleText = "Basic";
   } else {

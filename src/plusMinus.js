@@ -36,9 +36,6 @@ export class PlusMinus extends React.Component {
     }
     var endValue = ''
 
-    console.log('inputChange for ' + this.props.aspect);
-    console.log('value: ' + value);
-
     if(value === '') {
       this.props.handleLineChange(value, aspect);
     }
@@ -46,41 +43,16 @@ export class PlusMinus extends React.Component {
     var i;
     for(i = 0; i < value.length; i++) {
       var char = value.charAt(i);
-      //console.log('char: ' + char);
-      //console.log(allowed_chars.indexOf(char))
       if(allowed_chars.indexOf(char) >= 0) {
-        //console.log('allowed')
         endValue += char;
       }
     }
 
-    console.log('endValue: ' + endValue);
-
     if(isNaN(parseInt(endValue))) {
-      console.log('sent string');
       this.props.handleLineChange(endValue, aspect);
     } else {
-      console.log('sent num');
       this.props.handleLineChange(parseInt(endValue), aspect);
     }
-  }
-
-  readValue(value) {
-
-    console.log('readValue for ' + this.props.aspect);
-    console.log('value: ' + value);
-
-    // allow line to be cleared
-    if(value === '' || value === '-'){
-      return value;
-    // further scrub out NaNs
-    } else if(isNaN(value)) {
-      return 0;
-    // default
-    } else {
-      return value;
-    }
-
   }
 
   render() {
@@ -104,7 +76,7 @@ export class PlusMinus extends React.Component {
           <input
             type='text'
             onChange={(e) => this.inputChange(e)}
-            value={this.readValue(this.props.value)}
+            value={this.props.value}
             data-aspect={this.props.aspect}
             ref={this.input}
             className='pm-input'

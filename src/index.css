@@ -1,6 +1,6 @@
 
 :root {
-  font-size: 2vh;
+  font-size: 1.8vh;
 }
 
 * {
@@ -32,7 +32,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: contain;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 code {

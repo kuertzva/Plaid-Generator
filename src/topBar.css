@@ -33,13 +33,9 @@
 
 #inner-nav a {
   text-decoration: none;
-  flex: 1 1 0;
-  padding: .7rem;
   background-color: rgba(0,0,0,.2);
   border: .05rem solid black;
   font-size: 1.5rem;
-  margin-top: .25rem;
-  margin-right: .25rem;
   text-align: center;
   text-justify: center;
   text-shadow: 0rem 0rem black,
@@ -47,7 +43,13 @@
       0rem 0rem black,
       0rem 0rem black;
   color: white;
+}
 
+.link-block {
+  flex: 1 1 0;
+  padding: .7rem;
+  margin-top: .25rem;
+  margin-right: .25rem;
 }
 
 #inner-nav a.hidden {
