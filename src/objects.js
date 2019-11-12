@@ -121,6 +121,17 @@ export function line(height, width, index) {
 
     //console.log('Gaps: X = ' + xGap +', Y = ' + yGap);
 
+    // get offset modifications from bind chain
+    var inheritOffset = this.boundTo;
+    var xOffsetChange = 0;
+    var yOffsetChange = 0;
+    var whileCount = 0;
+    while(inheritOffset){
+      whileCount += 1;
+      xOffsetChange += inheritOffset.offset.x;
+      yOffsetChange += inheritOffset.offset.y;
+      inheritOffset = inheritOffset.boundTo;
+    }
 
     // mark out the ticks
     for(let i = 0; i < this.regularity; i++) {
@@ -128,10 +139,9 @@ export function line(height, width, index) {
         let xTick = ((xGap * (i + 1)) - (this.thickness / 2)) + this.offset.x + xStart;
         let yTick = ((yGap * (i + 1)) - (this.thickness / 2)) + this.offset.y + yStart;
 
-        if(this.boundTo) {
-          xTick += this.boundTo.offset.x;
-          yTick += this.boundTo.offset.y;
-        }
+        xTick += xOffsetChange;
+        yTick += yOffsetChange;
+
         //console.log('xTick: ' + xTick + ',yTick: ' + yTick);
 
         xAxis.push(xTick);

@@ -18,15 +18,17 @@ export function Bind(props) {
     } if(!found) {
       alert('none selected');
     }
-
   }
 
+  // create list of lines to bind to
   var otherLines = [];
   var count = 1;
-
+  const current = props.panels[props.currentPanel];
   while(count < props.panels.length) {
     if (count !== props.currentPanel) {
-      otherLines.push(count);
+      if(!(current.bindees.includes(props.panels[count]))) {
+        otherLines.push(count);
+      }
     }
     count++;
   }

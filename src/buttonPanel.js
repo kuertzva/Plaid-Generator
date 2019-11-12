@@ -6,7 +6,7 @@ export function ButtonPanel(props) {
   function switchPanel(e) {
     let diff = parseInt(e.target.value)
 
-    props.switchPanel(diff);
+    props.handlers['switchLine'](diff);
   }
 
 
@@ -32,36 +32,36 @@ export function ButtonPanel(props) {
         {'<<'}
       </button>
       <button
-        onClick={props.handleAddLine}
+        onClick={props.handlers['addLine']}
         id='add'
       >
         Add
       </button>
       <button
-        onClick={props.handleRemoveLine}
+        onClick={props.handlers['removeLine']}
         id='remove'
       >
         Remove
       </button>
       <button
-        onClick={props.handleCopyLine}
+        onClick={props.handlers['copyLine']}
         id='copy'
       >
         Copy
       </button>
       <button
-        onClick={props.handleDisplay}
+        onClick={props.handlers['advancedToggle']}
       >
         {toggleText}
       </button>
       <button
-        onClick={props.handleDownload}
+        onClick={props.handlers['downloadToggle']}
         id='download'
       >
         Download
       </button>
       <button
-        onClick={props.handleBind}
+        onClick={props.handlers['bindToggle']}
         id='bind'
       >
         Bind
