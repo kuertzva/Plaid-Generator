@@ -62,6 +62,7 @@ export class Canvas extends React.Component {
 
   canvasStart(e) {
     e.preventDefault();
+    console.log('start')
 
     // account for click or touch
     var coords;
@@ -114,12 +115,18 @@ export class Canvas extends React.Component {
 
   canvasMove(e) {
     e.preventDefault();
+    console.log('move')
 
     if(this.priorClick.idx === null) {
       return;
     }
 
-    const coords = this.canvasCoords(e);
+    var coords;
+    if(e.type === 'touchmove'){
+      coords= this.canvasCoords(e.changedTouches[0]);
+    } else {
+      coords = this.canvasCoords(e)
+    }
     const lines = this.props.panels;
     const line = lines[this.priorClick.idx];
 
@@ -139,6 +146,7 @@ export class Canvas extends React.Component {
 
   canvasEnd(e) {
     e.preventDefault();
+    console.log('end')
 
     this.updateCanvas();
 
