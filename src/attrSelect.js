@@ -23,7 +23,7 @@ export function AttrSelect(props) {
       <select
         size={props.options.length}
         value={props.value}
-        onChange={(e) => this.handleLineChange(e)}
+        onChange={(e) => handleLineChange(e)}
         data-aspect={props.aspect}
         className='pm-select border-change'
       >
