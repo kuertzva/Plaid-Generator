@@ -17,7 +17,7 @@ export function TopBar(props) {
         <div id='inner-nav'>
           <a class='link-block' href='https://vkwebsite.herokuapp.com/'>Homepage</a>
           <a class='link-block' href='https://vkplaid.herokuapp.com/' id='active'>Plaid Maker</a>
-          <a class='link-block' href='https://vkwebsite.herokuapp.com/ep_search'>Episode Picker</a>
+          <a class='link-block' href='https://vkep-picker.herokuapp.com/'>Episode Picker</a>
           <p class='hidden link-block' id='placeholder'></p>
         </div>
       </div>
